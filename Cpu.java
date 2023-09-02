@@ -26,12 +26,12 @@ public class Cpu{
 
 
             PrintWriter pw = new PrintWriter(os);
-            pw.print(PC + "\n" +"test" + "\n");
+            pw.print(PC + "\n");
             pw.flush();
             Scanner sc = new Scanner(is);
             System.out.println(sc.nextLine());
-            // pw.print("test" + "\n");
-            // pw.flush();
+            pw.print("test" + "\n");
+            pw.flush();
             System.out.println(sc.nextLine());
             
         } catch (Throwable t) {
