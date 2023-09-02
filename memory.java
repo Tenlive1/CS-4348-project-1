@@ -9,7 +9,6 @@ public class memory{
         
 // 32 is space in ascii
 // 13 or 10 is newline in ascii
-        System.out.println(arg[0]);
         try {
             Stack<String> stack = new Stack<String>();
             
@@ -48,7 +47,19 @@ public class memory{
                 }
                 
             }
-	    //    System.out.println(mem[0]+ " " + "works!!");
+            
+            sc = new Scanner(System.in);
+            System.out.println(sc.nextLine());
+            sc = new Scanner(System.in);
+            System.out.println(sc.nextLine());
+
+            // if(sc.hasNextLine() && sc.nextLine() == "R"){
+            //     pos = Integer.parseInt(sc.nextLine());
+            //     System.out.println(pos);
+            // }else if (sc.hasNextLine() && sc.nextLine() == "W"){
+            //     System.out.println("oh no");
+            // }
+
 
 
 

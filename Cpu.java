@@ -20,12 +20,19 @@ public class Cpu{
             Runtime rt = Runtime.getRuntime();
             File file = new File(arg[0]);
             Process proc = rt.exec("java memory " + file);
-            InputStream is = proc.getInputStream();
-	        OutputStream os = proc.getOutputStream();
-            Scanner sc = new Scanner(is);
-	        String line = sc.nextLine();
+            InputStream is = proc.getInputStream(); // program take in other program output
+	        OutputStream os = proc.getOutputStream();// program will output something
+            
 
-            System.out.println(line);
+
+            PrintWriter pw = new PrintWriter(os);
+            pw.print(PC + "\n" +"test" + "\n");
+            pw.flush();
+            Scanner sc = new Scanner(is);
+            System.out.println(sc.nextLine());
+            // pw.print("test" + "\n");
+            // pw.flush();
+            System.out.println(sc.nextLine());
             
         } catch (Throwable t) {
             t.printStackTrace();
