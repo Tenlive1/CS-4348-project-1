@@ -26,16 +26,16 @@ public class Cpu{
 
 
             PrintWriter pw = new PrintWriter(os);
-            pw.printf("R\n");
+            pw.printf("R\n"); // type in the command
             pw.flush();
 
-            pw.printf(PC + "\n");
+            pw.printf(PC + "\n"); // type the pc so that memory know where to look at
             pw.flush();
-            Scanner sc = new Scanner(is);
+            Scanner sc = new Scanner(is);// seeing the input that the other program have input
             
             
-            System.out.println(sc.nextLine());
-            pw.printf("W\n");
+            System.out.println(sc.nextLine());// seeing what happen should print 0
+            pw.printf("W\n");// entering and seeing if write work
             pw.flush();
             System.out.println(sc.nextLine());
             
