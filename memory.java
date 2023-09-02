@@ -62,16 +62,6 @@ public class memory{
                 }
             }
 
-            // if(sc.hasNextLine() && sc.nextLine() == "R"){
-            //     pos = Integer.parseInt(sc.nextLine());
-            //     System.out.println(pos);
-            // }else if (sc.hasNextLine() && sc.nextLine() == "W"){
-            //     System.out.println("oh no");
-            // }
-
-
-
-
             
         } catch (Throwable t) {
             t.printStackTrace();
