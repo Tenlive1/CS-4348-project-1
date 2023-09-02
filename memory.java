@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
+import java.util.Stack;
 import java.lang.Runtime;
 
 public class memory{
@@ -10,6 +11,8 @@ public class memory{
 // 13 or 10 is newline in ascii
 
         try {
+            Stack<String> stack = new Stack<String>();
+            
             String [] mem = new String[2000]; 
             Runtime rt = Runtime.getRuntime();
             int pos =0;// this is so that i can access the array
