@@ -47,11 +47,20 @@ public class memory{
                 }
                 
             }
+
+            sc = new Scanner(System.in);
             
-            sc = new Scanner(System.in);
-            System.out.println(sc.nextLine());
-            sc = new Scanner(System.in);
-            System.out.println(sc.nextLine());
+            while(sc.hasNext()){
+                String line = sc.nextLine();
+                if(line.equalsIgnoreCase("R")){
+                    pos = sc.nextInt();
+                    System.out.println(pos);
+                }else if(line.equalsIgnoreCase("W")){
+                    System.out.println("need to write something in memory");
+                }else if(line.equalsIgnoreCase("E")){
+                    System.exit(0);
+                }
+            }
 
             // if(sc.hasNextLine() && sc.nextLine() == "R"){
             //     pos = Integer.parseInt(sc.nextLine());

@@ -26,11 +26,16 @@ public class Cpu{
 
 
             PrintWriter pw = new PrintWriter(os);
-            pw.print(PC + "\n");
+            pw.printf("R\n");
+            pw.flush();
+
+            pw.printf(PC + "\n");
             pw.flush();
             Scanner sc = new Scanner(is);
+            
+            
             System.out.println(sc.nextLine());
-            pw.print("test" + "\n");
+            pw.printf("W\n");
             pw.flush();
             System.out.println(sc.nextLine());
             
