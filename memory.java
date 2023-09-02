@@ -9,7 +9,7 @@ public class memory{
         
 // 32 is space in ascii
 // 13 or 10 is newline in ascii
-
+        System.out.println(arg[0]);
         try {
             Stack<String> stack = new Stack<String>();
             
@@ -19,8 +19,8 @@ public class memory{
             File file = new File(arg[0]);
             Scanner sc = new Scanner(file);
             int i;// this is the ascii holder
-            String temp = "";//tempery hold
-            String hold = "";
+            String temp = "";//hold the sentence
+            String hold = "";// hold the character
 
             while(sc.hasNextLine()){// seeing if there's a new line
                 temp = sc.nextLine();// getting a new line
@@ -48,7 +48,7 @@ public class memory{
                 }
                 
             }
-	       
+	    //    System.out.println(mem[0]+ " " + "works!!");
 
 
 
