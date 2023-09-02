@@ -14,7 +14,7 @@ public class Cpu{
         int y;
         //testing testing
 
-        //i am using my laptoop right now!!!
+        // cool i am using my pc
     }
 
 
