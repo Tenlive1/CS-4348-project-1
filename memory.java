@@ -62,6 +62,9 @@ public class memory{
                     stack.push(Integer.toString(pos));// push the pc into the stack
                     pos = Integer.valueOf(mem[pos]);
                     System.out.println(pos);                    
+                }else if(line.equalsIgnoreCase("POP")){
+                    pos = Integer.valueOf(stack.pop());
+                    System.out.println(pos);
                 }
                 else if(line.equalsIgnoreCase("E")){
                     System.exit(0);

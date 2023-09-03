@@ -136,6 +136,10 @@ public class Cpu{
                     PC = sc.nextInt();
                     break;
                     case 24:
+                    pw.printf("POP\n");
+                    pw.flush();
+                    PC = sc.nextInt();
+                    PC++;
                     
                     break;
                     case 25:
