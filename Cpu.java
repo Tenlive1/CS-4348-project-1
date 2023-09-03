@@ -10,9 +10,6 @@ public class Cpu{
         int SP = 0; // Stack pointer
         int IR = 0; // instruction reg
         int AC = 0; // Accumulator
-        /* TODO LIST 
-         * ask the professor if i should inialize the x and y variable
-         */
         int x = 0; 
         int y = 0;
 
@@ -44,13 +41,13 @@ public class Cpu{
                 IR = sc.nextInt();// memory will give us an innstruction value
                 PC++;
                 switch(IR){ // this is how the CPU going to read the intruction from the memory
-                    case 1:
+                    case 1://Load the value into the AC
                     pw.printf("R\n");
                     pw.flush();
                     pw.printf(PC + "\n");
                     pw.flush();
                     AC = sc.nextInt();
-                    PC++;
+                    PC++;// this increament the PC so that the memory don't return the wrong spot
                     break;
                     case 2:
                     /* code */
@@ -128,18 +125,18 @@ public class Cpu{
                     case 22:
                     /* code */
                     break;
-                    case 23:
+                    case 23://Push return address onto stack, jump to the address
                     pw.printf("PUSH\n");
                     pw.flush();
                     pw.printf(PC + "\n");
                     pw.flush();
                     PC = sc.nextInt();
                     break;
-                    case 24:
+                    case 24://Pop return address from the stack, jump to the address
                     pw.printf("POP\n");
                     pw.flush();
                     PC = sc.nextInt();
-                    PC++;
+                    PC++;//this increament so that the CPU won't stay at the same spot when it was push into the stack
                     
                     break;
                     case 25:
