@@ -129,14 +129,14 @@ public class Cpu{
                     /* code */
                     break;
                     case 23:
-                    // pw.printf("PUSH\n");
-                    // pw.flush();
-                    // pw.printf(PC + "\n");
-                    // pw.flush();
-                    // PC = sc.nextInt();
+                    pw.printf("PUSH\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+                    PC = sc.nextInt();
                     break;
                     case 24:
-                    /* code */
+                    
                     break;
                     case 25:
                     /* code */
