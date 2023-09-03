@@ -1,17 +1,20 @@
 import java.io.*;
 import java.util.Scanner;
 import java.lang.Runtime;
-
+import java.util.Random;
 public class Cpu{
 
     public static void main(String arg[]){
     //register
         int PC = 0; // program counter
-        int SP; // Stack pointer
+        int SP = 0; // Stack pointer
         int IR = 0; // instruction reg
-        int AC; // Accumulator
-        int x; 
-        int y;
+        int AC = 0; // Accumulator
+        /* TODO LIST 
+         * ask the professor if i should inialize the x and y variable
+         */
+        int x = 0; 
+        int y = 0;
 
         int stop = 0;
 
@@ -27,6 +30,8 @@ public class Cpu{
 
 
             PrintWriter pw = new PrintWriter(os);// to write
+            
+           
             while(IR != 50  ){
                 pw.printf("R\n"); // type in the command
                 pw.flush();
@@ -59,16 +64,28 @@ public class Cpu{
                     /* code */
                     break;
                     case 8:
-                    /* code */
+                    Random rando = new Random();
+                    AC = rando.nextInt(100) + 1; //(0 - 99) + 1 = (1 - 100) range 
                     break;
                     case 9:
-                    /* code */
+                    PC++;
+                    pw.printf("R\n"); // type in the command
+                    pw.flush();
+                    pw.printf(PC + "\n"); // type the pc so that memory know where to look at
+                    pw.flush();
+                    IR = sc.nextInt();
+                    if(IR == 1){
+                        System.out.print(AC);
+                    }else if(IR == 2){
+                        char ch = (char)AC;
+                        System.out.print(ch);
+                    }
                     break;
                     case 10:
-                    /* code */
+                    AC = AC + x;
                     break;
                     case 11:
-                    /* code */
+                    AC = AC + y;
                     break;
                     case 12:
                     /* code */
@@ -77,13 +94,13 @@ public class Cpu{
                     /* code */
                     break;
                     case 14:
-                    /* code */
+                    x = AC;
                     break;
                     case 15:
                     /* code */
                     break;
                     case 16:
-                    /* code */
+                    y = AC;
                     break;
                     case 17:
                     /* code */
@@ -185,10 +202,12 @@ public class Cpu{
                     /* code */
                     break;
                     case 50:
-                    /* code */
+                    pw.printf("E\n"); // type in the command
+                    pw.flush();
+                    System.exit(0);
                     break;
                 }
-                break;
+                PC++;
 
  
             }
