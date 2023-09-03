@@ -54,7 +54,8 @@ public class memory{
                 String line = sc.nextLine();
                 if(line.equalsIgnoreCase("R")){
                     pos = sc.nextInt();
-                    System.out.println(pos);
+                    System.out.println(mem[pos]);
+                    break;
                 }else if(line.equalsIgnoreCase("W")){
                     System.out.println("need to write something in memory");
                 }else if(line.equalsIgnoreCase("E")){
