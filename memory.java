@@ -57,8 +57,17 @@ public class memory{
                     System.out.println(mem[pos]);
                 }else if(line.equalsIgnoreCase("W")){
                     System.out.println("need to write something in memory");
-                }else if(line.equalsIgnoreCase("E")){
+                }else if(line.equalsIgnoreCase("PUSH")){
+                    pos = sc.nextInt();
+                    stack.push(Integer.toString(pos));// push the pc into the stack
+                    pos = Integer.valueOf(mem[pos]);
+                    System.out.println(pos);                    
+                }
+                else if(line.equalsIgnoreCase("E")){
                     System.exit(0);
+                }
+                else{
+                    System.out.println(line);
                 }
             }
 

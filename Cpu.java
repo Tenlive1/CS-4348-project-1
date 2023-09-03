@@ -16,7 +16,6 @@ public class Cpu{
         int x = 0; 
         int y = 0;
 
-        int stop = 0;
 
         
         try {
@@ -31,19 +30,27 @@ public class Cpu{
 
             PrintWriter pw = new PrintWriter(os);// to write
             
+            // Scanner sc = new Scanner(is);
+            // System.out.println(sc.nextLine());
            
             while(IR != 50  ){
-                pw.printf("R\n"); // type in the command
+                pw.printf("R\n"); // tell the memory to read the instruction to the cpu
                 pw.flush();
 
-                pw.printf(PC + "\n"); // type the pc so that memory know where to look at
+                pw.printf(PC + "\n"); // type the pc so that memory know where to look at in memory
                 pw.flush();
                 Scanner sc = new Scanner(is);// seeing the input that the other program have input
-
-                IR = sc.nextInt();
-                switch(IR){
+                
+                IR = sc.nextInt();// memory will give us an innstruction value
+                PC++;
+                switch(IR){ // this is how the CPU going to read the intruction from the memory
                     case 1:
-                    /* code */
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+                    AC = sc.nextInt();
+                    PC++;
                     break;
                     case 2:
                     /* code */
@@ -63,28 +70,29 @@ public class Cpu{
                     case 7:
                     /* code */
                     break;
-                    case 8:
+                    case 8://Gets a random int from 1 to 100 into the AC
                     Random rando = new Random();
                     AC = rando.nextInt(100) + 1; //(0 - 99) + 1 = (1 - 100) range 
                     break;
-                    case 9:
+                    case 9:// Put port
+                    
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
                     PC++;
-                    pw.printf("R\n"); // type in the command
-                    pw.flush();
-                    pw.printf(PC + "\n"); // type the pc so that memory know where to look at
-                    pw.flush();
                     IR = sc.nextInt();
-                    if(IR == 1){
+                    if(IR == 1){//If port=1, writes AC as an int to the screen
                         System.out.print(AC);
-                    }else if(IR == 2){
+                    }else if(IR == 2){// If port=2, writes AC as a char to the screen
                         char ch = (char)AC;
                         System.out.print(ch);
                     }
                     break;
-                    case 10:
+                    case 10://Add the value in X to the AC
                     AC = AC + x;
                     break;
-                    case 11:
+                    case 11:// Add the value in Y to the AC
                     AC = AC + y;
                     break;
                     case 12:
@@ -121,7 +129,11 @@ public class Cpu{
                     /* code */
                     break;
                     case 23:
-                    /* code */
+                    // pw.printf("PUSH\n");
+                    // pw.flush();
+                    // pw.printf(PC + "\n");
+                    // pw.flush();
+                    // PC = sc.nextInt();
                     break;
                     case 24:
                     /* code */
@@ -201,13 +213,13 @@ public class Cpu{
                     case 49:
                     /* code */
                     break;
-                    case 50:
+                    case 50://End execution
                     pw.printf("E\n"); // type in the command
                     pw.flush();
                     System.exit(0);
                     break;
                 }
-                PC++;
+                
 
  
             }
