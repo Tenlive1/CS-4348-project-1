@@ -19,6 +19,8 @@ public class Cpu{
 
             Runtime rt = Runtime.getRuntime();
             File file = new File(arg[0]);
+            int timer = Integer.parseInt(arg[1]);
+            int counter =0;
             Process proc = rt.exec("java memory " + file);// executing a command
             InputStream is = proc.getInputStream(); // program take in other program output
 	        OutputStream os = proc.getOutputStream();// program will output something
@@ -155,63 +157,6 @@ public class Cpu{
                     /* code */
                     break;
                     case 30:
-                    /* code */
-                    break;
-                    case 31:
-                    /* code */
-                    break;
-                    case 32:
-                    /* code */
-                    break;
-                    case 33:
-                    /* code */
-                    break;
-                    case 34:
-                    /* code */
-                    break;
-                    case 35:
-                    /* code */
-                    break;
-                    case 36:
-                    /* code */
-                    break;
-                    case 37:
-                    /* code */
-                    break;
-                    case 38:
-                    /* code */
-                    break;
-                    case 39:
-                    /* code */
-                    break;
-                    case 40:
-                    /* code */
-                    break;
-                    case 41:
-                    /* code */
-                    break;
-                    case 42:
-                    /* code */
-                    break;
-                    case 43:
-                    /* code */
-                    break;
-                    case 44:
-                    /* code */
-                    break;
-                    case 45:
-                    /* code */
-                    break;
-                    case 46:
-                    /* code */
-                    break;
-                    case 47:
-                    /* code */
-                    break;
-                    case 48:
-                    /* code */
-                    break;
-                    case 49:
                     /* code */
                     break;
                     case 50://End execution
