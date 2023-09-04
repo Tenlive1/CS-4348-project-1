@@ -19,8 +19,8 @@ public class Cpu{
 
             Runtime rt = Runtime.getRuntime();
             File file = new File(arg[0]);
-            int timer = Integer.parseInt(arg[1]);
-            int counter =0;
+            // int timer = Integer.parseInt(arg[1]);
+            // int counter =0;
             Process proc = rt.exec("java memory " + file);// executing a command
             InputStream is = proc.getInputStream(); // program take in other program output
 	        OutputStream os = proc.getOutputStream();// program will output something
@@ -165,6 +165,12 @@ public class Cpu{
                     System.exit(0);
                     break;
                 }
+                // if(counter == timer){
+                //     counter =0;
+                //     /* code for kernal mode basically go to address 1000 and save the system state bla */
+                // }else{
+
+                // }
                 
 
  
