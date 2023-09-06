@@ -7,7 +7,7 @@ public class Cpu{
     public static void main(String arg[]){
     //register
         int PC = 0; // program counter
-        int SP = 0; // Stack pointer
+        int SP = 999; // Stack pointer
         int IR = 0; // instruction reg
         int AC = 0; // Accumulator
         int x = 0; 
@@ -130,12 +130,18 @@ public class Cpu{
                     case 23://Push return address onto stack, jump to the address
                     pw.printf("PUSH\n");
                     pw.flush();
+                    pw.printf(SP + "\n");
+                    pw.flush();
+                    SP--;
                     pw.printf(PC + "\n");
                     pw.flush();
                     PC = sc.nextInt();
                     break;
                     case 24://Pop return address from the stack, jump to the address
                     pw.printf("POP\n");
+                    pw.flush();
+                    SP++;
+                    pw.printf(SP + "\n");
                     pw.flush();
                     PC = sc.nextInt();
                     PC++;//this increament so that the CPU won't stay at the same spot when it was push into the stack

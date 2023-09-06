@@ -9,9 +9,7 @@ public class memory{
         
 // 32 is space in ascii
 // 13 or 10 is newline in ascii
-        try {
-            Stack<String> stack = new Stack<String>();
-            
+        try {            
             String [] mem = new String[2000]; 
             Runtime rt = Runtime.getRuntime();
             int pos =0;// this is so that i can access the array
@@ -58,12 +56,14 @@ public class memory{
                 }else if(line.equalsIgnoreCase("W")){
                     System.out.println("need to write something in memory");
                 }else if(line.equalsIgnoreCase("PUSH")){
+                    int Spos = sc.nextInt();
                     pos = sc.nextInt();
-                    stack.push(Integer.toString(pos));// push the pc into the stack
+                    mem[Spos] = String.valueOf(pos);
                     pos = Integer.valueOf(mem[pos]);
                     System.out.println(pos);                    
                 }else if(line.equalsIgnoreCase("POP")){
-                    pos = Integer.valueOf(stack.pop());
+                    int Spos = sc.nextInt();
+                    pos = Integer.valueOf(mem[Spos]);
                     System.out.println(pos);
                 }
                 else if(line.equalsIgnoreCase("E")){
