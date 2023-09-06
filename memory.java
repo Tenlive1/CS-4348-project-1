@@ -55,11 +55,11 @@ public class memory{
                     System.out.println(mem[pos]);
                 }else if(line.equalsIgnoreCase("W")){
                     System.out.println("need to write something in memory");
-                }else if(line.equalsIgnoreCase("PUSH")){
-                    int Spos = sc.nextInt();
-                    pos = sc.nextInt();
-                    mem[Spos] = String.valueOf(pos);
-                    pos = Integer.valueOf(mem[pos]);
+                }else if(line.equalsIgnoreCase("PUSH")){//cpu want to push something
+                    int Spos = sc.nextInt();// will get the stack pointer
+                    pos = sc.nextInt(); // the PC
+                    mem[Spos] = String.valueOf(pos); // the posistion is now in the the user stack
+                    pos = Integer.valueOf(mem[pos]); // gives the new position
                     System.out.println(pos);                    
                 }else if(line.equalsIgnoreCase("POP")){
                     int Spos = sc.nextInt();

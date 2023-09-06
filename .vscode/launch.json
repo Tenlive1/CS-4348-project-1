@@ -4,6 +4,15 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "type": "java",
+            "name": "Cpu",
+            "request": "launch",
+            "mainClass": "Cpu",
+            "projectName": "CS-4348-project-1_c2f24bd2",
+            "args": "test.txt 30"
+        },
         {
             "type": "java",
             "name": "Current File",

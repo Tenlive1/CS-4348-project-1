@@ -7,7 +7,7 @@ public class Cpu{
     public static void main(String arg[]){
     //register
         int PC = 0; // program counter
-        int SP = 999; // Stack pointer
+        int SP = 1000; // Stack pointer
         int IR = 0; // instruction reg
         int AC = 0; // Accumulator
         int x = 0; 
@@ -19,8 +19,8 @@ public class Cpu{
 
             Runtime rt = Runtime.getRuntime();
             File file = new File(arg[0]);
-            // int timer = Integer.parseInt(arg[1]);
-            // int counter =0;
+            int timer = Integer.parseInt(arg[1]);
+            int counter =0;
             Process proc = rt.exec("java memory " + file);// executing a command
             InputStream is = proc.getInputStream(); // program take in other program output
 	        OutputStream os = proc.getOutputStream();// program will output something
@@ -57,8 +57,18 @@ public class Cpu{
                     case 3:
                     /* code */
                     break;
-                    case 4:
-                    /* code */
+                    case 4://Load the value at (address+X) into the AC
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+                    int address = sc.nextInt();// return the value of the address
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf((address + x) + "\n");
+                    pw.flush();
+                    PC++;
+                    AC = sc.nextInt();                    
                     break;
                     case 5:
                     /* code */
@@ -119,10 +129,22 @@ public class Cpu{
                     /* code */
                     break;
                     case 20:
-                    /* code */
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+                    PC = sc.nextInt();
                     break;
                     case 21:
-                    /* code */
+                    if(AC == 0){
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf(PC + "\n");
+                        pw.flush();
+                        PC = sc.nextInt();
+                    }else{
+                        PC++;
+                    }
                     break;
                     case 22:
                     /* code */
@@ -130,9 +152,9 @@ public class Cpu{
                     case 23://Push return address onto stack, jump to the address
                     pw.printf("PUSH\n");
                     pw.flush();
+                    SP--;
                     pw.printf(SP + "\n");
                     pw.flush();
-                    SP--;
                     pw.printf(PC + "\n");
                     pw.flush();
                     PC = sc.nextInt();
@@ -140,15 +162,15 @@ public class Cpu{
                     case 24://Pop return address from the stack, jump to the address
                     pw.printf("POP\n");
                     pw.flush();
-                    SP++;
                     pw.printf(SP + "\n");
                     pw.flush();
+                    SP++;
                     PC = sc.nextInt();
                     PC++;//this increament so that the CPU won't stay at the same spot when it was push into the stack
                     
                     break;
                     case 25:
-                    /* code */
+                    x++;
                     break;
                     case 26:
                     /* code */
@@ -171,12 +193,13 @@ public class Cpu{
                     System.exit(0);
                     break;
                 }
-                // if(counter == timer){
-                //     counter =0;
-                //     /* code for kernal mode basically go to address 1000 and save the system state bla */
-                // }else{
-
-                // }
+                if(counter == timer){
+                    counter =0;
+                    System.out.println("count is at" + timer);
+                    /* code for kernal mode basically go to address 1999 and save the system state bla */
+                }else{
+                    counter++;
+                }
                 
 
  
