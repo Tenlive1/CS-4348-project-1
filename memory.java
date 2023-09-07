@@ -69,6 +69,18 @@ public class memory{
                 else if(line.equalsIgnoreCase("E")){
                     System.exit(0);
                 }
+                else if(line.equalsIgnoreCase("Time")){
+                    pos = sc.nextInt();
+                    mem[pos] = String.valueOf(sc.nextInt());// storing the user SP
+                    pos = sc.nextInt();
+                    mem[pos] = String.valueOf(sc.nextInt());// storing the PC
+                }else if(line.equalsIgnoreCase("Done")){//done with the interrupt
+                    pos = sc.nextInt();
+                    
+                    System.out.println(mem[pos]);
+                    pos = sc.nextInt();
+                    System.out.println(mem[pos]);
+                }
                 else{
                     System.out.println(line);
                 }

@@ -184,8 +184,17 @@ public class Cpu{
                     case 29:
                     /* code */
                     break;
-                    case 30:
-                    /* code */
+                    case 30://return from system call
+                    pw.printf("done\n");
+                    pw.flush();
+                    pw.printf(SP + "\n");
+                    pw.flush();
+                    PC = sc.nextInt();
+                    SP++;
+                    pw.printf(SP+"\n");
+                    pw.flush();
+                    SP = sc.nextInt();
+                    
                     break;
                     case 50://End execution
                     pw.printf("E\n"); // type in the command
@@ -195,7 +204,23 @@ public class Cpu{
                 }
                 if(counter == timer){
                     counter =0;
-                    System.out.println("count is at" + timer);
+                    int temp = SP;// to keep the user SP
+                    SP =1999;// changing the SP to the system stack pointer
+                    
+                    pw.printf("time\n");// this tell memory what's going on "time interrupts"
+                    pw.flush();
+                    pw.printf(SP +"\n"); // memory want to know what the system stack pointer is
+                    pw.flush();
+
+                    pw.printf(temp+"\n"); // this is so that memory can store the user stack pointer
+                    pw.flush();
+                    SP--;
+                    pw.printf(SP + "\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+
+                    PC = 1000;
                     /* code for kernal mode basically go to address 1999 and save the system state bla */
                 }else{
                     counter++;
@@ -224,5 +249,5 @@ public class Cpu{
         }
     }
 
-
+// need to add a flag to tell system that it is in a different mode.
 }
