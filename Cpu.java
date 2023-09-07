@@ -181,6 +181,8 @@ public class Cpu{
                     pw.printf(SP + "\n");
                     pw.flush();
                     SP++;
+                    pw.printf(1 + "\n");// this will tell the memory which push type to do.
+                    pw.flush();
                     PC = sc.nextInt();
                     PC++;//this increament so that the CPU won't stay at the same spot when it was push into the stack
                     
@@ -196,6 +198,8 @@ public class Cpu{
                     pw.flush();
                     SP--;
                     pw.printf(SP + "\n");
+                    pw.flush();
+                    pw.printf(2 + "\n");// this will tell the memory which push type to do.
                     pw.flush();
                     break;
                     case 28:

@@ -72,8 +72,15 @@ public class memory{
                     }                    
                 }else if(line.equalsIgnoreCase("POP")){
                     int Spos = sc.nextInt();
-                    pos = Integer.valueOf(mem[Spos]);
-                    System.out.println(pos);
+                    switch (sc.nextInt()){
+                        case 1:
+                            pos = Integer.valueOf(mem[Spos]);
+                            System.out.println(pos);
+                        break;
+                        case 2:
+                        break;
+                    }
+                    
                 }
                 else if(line.equalsIgnoreCase("E")){
                     System.exit(0);
