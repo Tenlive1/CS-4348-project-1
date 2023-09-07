@@ -67,7 +67,7 @@ public class memory{
                         break;
 
                         case 2:
-                        System.out.println("wow");
+                        mem[Spos] = String.valueOf(sc.nextInt());
                         break;
                     }                    
                 }else if(line.equalsIgnoreCase("POP")){

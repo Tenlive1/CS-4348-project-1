@@ -201,6 +201,8 @@ public class Cpu{
                     pw.flush();
                     pw.printf(2 + "\n");// this will tell the memory which push type to do.
                     pw.flush();
+                    pw.printf(AC + "\n");
+                    pw.flush();
                     break;
                     case 28:
                     /* code */
