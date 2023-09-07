@@ -78,6 +78,7 @@ public class memory{
                             System.out.println(pos);
                         break;
                         case 2:
+                        System.out.println(mem[Spos]);
                         break;
                     }
                     

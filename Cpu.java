@@ -204,8 +204,15 @@ public class Cpu{
                     pw.printf(AC + "\n");
                     pw.flush();
                     break;
-                    case 28:
-                    /* code */
+                    case 28://Pop from stack into AC
+                    pw.printf("POP\n");
+                    pw.flush();
+                    pw.printf(SP + "\n");
+                    pw.flush();
+                    SP++;
+                    pw.printf(2 + "\n");
+                    pw.flush();
+                    AC = sc.nextInt();
                     break;
                     case 29:
                     /* code */
