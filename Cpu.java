@@ -13,7 +13,10 @@ public class Cpu{
         int x = 0; 
         int y = 0;
 
-
+/* TODO LIST
+ * need to make a flag for when there's 2 interrupts
+ * need to make a flag to go into kernal mode.
+ */
         
         try {
 
@@ -56,6 +59,7 @@ public class Cpu{
                     break;
                     case 3:
                     /* code */
+                    
                     break;
                     case 4://Load the value at (address+X) into the AC
                     pw.printf("R\n");
@@ -71,7 +75,17 @@ public class Cpu{
                     AC = sc.nextInt();                    
                     break;
                     case 5:
-                    /* code */
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+                    address = sc.nextInt();// return the value of the address
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf((address + y) + "\n");
+                    pw.flush();
+                    PC++;
+                    AC = sc.nextInt();
                     break;
                     case 6:
                     /* code */
@@ -128,7 +142,7 @@ public class Cpu{
                     case 19:
                     /* code */
                     break;
-                    case 20:
+                    case 20:// jump to address
                     pw.printf("R\n");
                     pw.flush();
                     pw.printf(PC + "\n");
@@ -155,6 +169,8 @@ public class Cpu{
                     SP--;
                     pw.printf(SP + "\n");
                     pw.flush();
+                    pw.printf(1 + "\n");// this will tell the memory which push type to do.
+                    pw.flush();
                     pw.printf(PC + "\n");
                     pw.flush();
                     PC = sc.nextInt();
@@ -176,7 +192,11 @@ public class Cpu{
                     /* code */
                     break;
                     case 27:
-                    /* code */
+                    pw.printf("PUSH\n");
+                    pw.flush();
+                    SP--;
+                    pw.printf(SP + "\n");
+                    pw.flush();
                     break;
                     case 28:
                     /* code */
