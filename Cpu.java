@@ -88,7 +88,11 @@ public class Cpu{
                     AC = sc.nextInt();
                     break;
                     case 6:
-                    /* code */
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf((SP+x) + "\n");
+                    pw.flush();
+                    AC = sc.nextInt();
                     break;
                     case 7:
                     /* code */
@@ -128,7 +132,7 @@ public class Cpu{
                     x = AC;
                     break;
                     case 15:
-                    /* code */
+                    AC = x;
                     break;
                     case 16:
                     y = AC;
@@ -191,7 +195,7 @@ public class Cpu{
                     x++;
                     break;
                     case 26:
-                    /* code */
+                    x--;
                     break;
                     case 27:
                     pw.printf("PUSH\n");
