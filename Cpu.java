@@ -120,6 +120,8 @@ public class Cpu{
                     case 7:
                     pw.printf("w\n" + PC + "\n");
                     pw.flush();
+                    pw.printf(AC+"\n");
+                    PC++;
                     break;
                     case 8://Gets a random int from 1 to 100 into the AC
                     Random rando = new Random();
