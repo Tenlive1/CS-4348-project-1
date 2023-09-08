@@ -19,6 +19,7 @@ public class memory{
             String temp = "";//hold the sentence
             String hold = "";// hold the character
 
+            //this will let memory hold the instruction
             while(sc.hasNextLine()){// seeing if there's a new line
                 temp = sc.nextLine();// getting a new line
                 if(temp.length()>0){// if there's a line continue else if there's like a newline or a return skip that line
@@ -47,7 +48,7 @@ public class memory{
             }
 
             sc = new Scanner(System.in);
-            
+            //memory talking to the cpu
             while(sc.hasNext()){
                 String line = sc.nextLine();
                 if(line.equalsIgnoreCase("R")){
@@ -100,9 +101,6 @@ public class memory{
                     System.out.println(mem[pos]);
                     pos = sc.nextInt();
                     System.out.println(mem[pos]);
-                }
-                else{
-                    System.out.println(line);
                 }
             }
 

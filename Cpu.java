@@ -14,12 +14,9 @@ public class Cpu{
         int y = 0;
     // variable
     boolean kernel = false;
+    //int address
 
 
-/* TODO LIST
- * need to make a flag for when there's 2 interrupts
- * need to make a flag to go into kernal mode.
- */
         
         try {
 
@@ -35,8 +32,6 @@ public class Cpu{
 
             PrintWriter pw = new PrintWriter(os);// to write
             
-            // Scanner sc = new Scanner(is);
-            // System.out.println(sc.nextLine());
            
             while(IR != 50  ){
                 pw.printf("R\n"); // tell the memory to read the instruction to the cpu
