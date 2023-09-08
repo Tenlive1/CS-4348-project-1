@@ -12,6 +12,9 @@ public class Cpu{
         int AC = 0; // Accumulator
         int x = 0; 
         int y = 0;
+    // variable
+    boolean kernel = false;
+
 
 /* TODO LIST
  * need to make a flag for when there's 2 interrupts
@@ -41,10 +44,20 @@ public class Cpu{
 
                 pw.printf(PC + "\n"); // type the pc so that memory know where to look at in memory
                 pw.flush();
-                Scanner sc = new Scanner(is);// seeing the input that the other program have input
-                
+                // set a flag to catch if the cpu is planning to go into the 1000 when it is not supposed to
+                if(!kernel && PC > 1000){
+                    System.out.println("Error have Enter System program without permission");
+                    pw.printf("E\n"); // type in the command
+                    pw.flush();
+                    System.exit(0);
+                }
+
+                Scanner sc = new Scanner(is);// seeing the input that the other program have input     
                 IR = sc.nextInt();// memory will give us an innstruction value
                 PC++;
+
+                
+                
                 switch(IR){ // this is how the CPU going to read the intruction from the memory
                     case 1://Load the value into the AC
                     pw.printf("R\n");
@@ -165,7 +178,15 @@ public class Cpu{
                     }
                     break;
                     case 22:
-                    /* code */
+                    if(AC != 0){
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf(PC + "\n");
+                        pw.flush();
+                        PC = sc.nextInt();
+                    }else{
+                        PC++;
+                    }
                     break;
                     case 23://Push return address onto stack, jump to the address
                     pw.printf("PUSH\n");
@@ -231,6 +252,7 @@ public class Cpu{
                     pw.printf(SP+"\n");
                     pw.flush();
                     SP = sc.nextInt();
+                    kernel =false;
                     
                     break;
                     case 50://End execution
@@ -239,8 +261,8 @@ public class Cpu{
                     System.exit(0);
                     break;
                 }
-                if(counter == timer){
-                    counter =0;
+                if(!kernel && (counter >= timer)){
+                    counter =counter - timer;
                     int temp = SP;// to keep the user SP
                     SP =1999;// changing the SP to the system stack pointer
                     
@@ -258,7 +280,9 @@ public class Cpu{
                     pw.flush();
 
                     PC = 1000;
-                    /* code for kernal mode basically go to address 1999 and save the system state bla */
+
+                    kernel =true;
+                    
                 }else{
                     counter++;
                 }
@@ -266,21 +290,6 @@ public class Cpu{
 
  
             }
-
-
-            
-            // pw.printf("R\n"); // type in the command
-            // pw.flush();
-
-           
-            // Scanner sc = new Scanner(is);// seeing the input that the other program have input
-            
-            
-            // System.out.println(sc.nextLine());// seeing what happen should print 0
-            // pw.printf("W\n");// entering and seeing if write work
-            // pw.flush();
-            // System.out.println(sc.nextLine());
-            
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -288,3 +297,4 @@ public class Cpu{
 
 // need to add a flag to tell system that it is in a different mode.
 }
+
