@@ -45,7 +45,7 @@ public class Cpu{
                 pw.printf(PC + "\n"); // type the pc so that memory know where to look at in memory
                 pw.flush();
                 // set a flag to catch if the cpu is planning to go into the 1000 when it is not supposed to
-                if(!kernel && PC > 1000){
+                if(!kernel && (PC > 1000)){
                     System.out.println("Error have Enter System program without permission");
                     pw.printf("E\n"); // type in the command
                     pw.flush();
