@@ -86,7 +86,7 @@ public class memory{
                 else if(line.equalsIgnoreCase("E")){
                     System.exit(0);
                 }
-                else if(line.equalsIgnoreCase("Time")){
+                else if(line.equalsIgnoreCase("interrupt")){
                     pos = sc.nextInt();
                     mem[pos] = String.valueOf(sc.nextInt());// storing the user SP
                     pos = sc.nextInt();

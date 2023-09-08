@@ -68,7 +68,13 @@ public class Cpu{
                     PC++;// this increament the PC so that the memory don't return the wrong spot
                     break;
                     case 2:
-                    /* code */
+                    pw.printf("R\n" + PC+"\n");
+                    pw.flush();
+                    int address = sc.nextInt();
+                    pw.printf("R\n" + address+"\n");
+                    pw.flush();
+                    AC = sc.nextInt();
+                    PC++;
                     break;
                     case 3:
                     /* code */
@@ -79,7 +85,7 @@ public class Cpu{
                     pw.flush();
                     pw.printf(PC + "\n");
                     pw.flush();
-                    int address = sc.nextInt();// return the value of the address
+                    address = sc.nextInt();// return the value of the address
                     pw.printf("R\n");
                     pw.flush();
                     pw.printf((address + x) + "\n");
@@ -108,7 +114,7 @@ public class Cpu{
                     AC = sc.nextInt();
                     break;
                     case 7:
-                    /* code */
+                    PC = AC;
                     break;
                     case 8://Gets a random int from 1 to 100 into the AC
                     Random rando = new Random();
@@ -136,10 +142,10 @@ public class Cpu{
                     AC = AC + y;
                     break;
                     case 12:
-                    /* code */
+                    AC = AC -x;
                     break;
                     case 13:
-                    /* code */
+                    AC = AC -y;
                     break;
                     case 14:
                     x = AC;
@@ -151,13 +157,13 @@ public class Cpu{
                     y = AC;
                     break;
                     case 17:
-                    /* code */
+                    AC = y;
                     break;
                     case 18:
-                    /* code */
+                    SP = AC;
                     break;
                     case 19:
-                    /* code */
+                    AC = SP;
                     break;
                     case 20:// jump to address
                     pw.printf("R\n");
@@ -239,8 +245,26 @@ public class Cpu{
                     pw.flush();
                     AC = sc.nextInt();
                     break;
-                    case 29:
-                    /* code */
+                    case 29:// system call so make pc go to 1500
+                    int temp = SP;// to keep the user SP
+                    SP =1999;// changing the SP to the system stack pointer
+                    
+                    pw.printf("interrupt\n");// this tell memory what's going on "time interrupts"
+                    pw.flush();
+                    pw.printf(SP +"\n"); // memory want to know what the system stack pointer is
+                    pw.flush();
+
+                    pw.printf(temp+"\n"); // this is so that memory can store the user stack pointer
+                    pw.flush();
+                    SP--;
+                    pw.printf(SP + "\n");
+                    pw.flush();
+                    pw.printf(PC + "\n");
+                    pw.flush();
+
+                    PC = 1500;
+
+                    kernel =true;
                     break;
                     case 30://return from system call
                     pw.printf("done\n");
@@ -262,11 +286,11 @@ public class Cpu{
                     break;
                 }
                 if(!kernel && (counter >= timer)){
-                    counter =counter - timer;
+                    counter =0;
                     int temp = SP;// to keep the user SP
                     SP =1999;// changing the SP to the system stack pointer
                     
-                    pw.printf("time\n");// this tell memory what's going on "time interrupts"
+                    pw.printf("interrupt\n");// this tell memory what's going on "time interrupts"
                     pw.flush();
                     pw.printf(SP +"\n"); // memory want to know what the system stack pointer is
                     pw.flush();
