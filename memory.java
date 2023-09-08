@@ -54,7 +54,10 @@ public class memory{
                     pos = sc.nextInt();
                     System.out.println(mem[pos]);
                 }else if(line.equalsIgnoreCase("W")){
-                    System.out.println("need to write something in memory");
+                    pos = sc.nextInt();
+                    pos = Integer.valueOf(mem[pos]);
+                    mem[pos] = String.valueOf(sc.nextInt());
+
                 }else if(line.equalsIgnoreCase("PUSH")){//cpu want to push something
                     int Spos = sc.nextInt();// will get the stack pointer
                     

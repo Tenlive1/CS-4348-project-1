@@ -118,7 +118,8 @@ public class Cpu{
                     AC = sc.nextInt();
                     break;
                     case 7:
-                    PC = AC;
+                    pw.printf("w\n" + PC + "\n");
+                    pw.flush();
                     break;
                     case 8://Gets a random int from 1 to 100 into the AC
                     Random rando = new Random();
