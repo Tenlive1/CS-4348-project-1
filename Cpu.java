@@ -68,10 +68,14 @@ public class Cpu{
                     PC++;// this increament the PC so that the memory don't return the wrong spot
                     break;
                     case 2:
-                    pw.printf("R\n" + PC+"\n");
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC+"\n");
                     pw.flush();
                     int address = sc.nextInt();
-                    pw.printf("R\n" + address+"\n");
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(address+"\n");
                     pw.flush();
                     AC = sc.nextInt();
                     PC++;
@@ -286,7 +290,7 @@ public class Cpu{
                     break;
                 }
                 if(!kernel && (counter >= timer)){
-                    counter =0;
+                    counter =counter - timer;
                     int temp = SP;// to keep the user SP
                     SP =1999;// changing the SP to the system stack pointer
                     
