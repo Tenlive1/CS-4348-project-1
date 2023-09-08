@@ -45,8 +45,8 @@ public class Cpu{
                 pw.printf(PC + "\n"); // type the pc so that memory know where to look at in memory
                 pw.flush();
                 // set a flag to catch if the cpu is planning to go into the 1000 when it is not supposed to
-                if(!kernel && (PC > 1000)){
-                    System.out.println("Error have Enter System program without permission");
+                if(!kernel && (PC > 999)){
+                    System.out.println("Memory violation: accessing system address "+PC+ " in user mode ");
                     pw.printf("E\n"); // type in the command
                     pw.flush();
                     System.exit(0);
@@ -73,12 +73,21 @@ public class Cpu{
                     pw.printf(PC+"\n");
                     pw.flush();
                     int address = sc.nextInt();
-                    pw.printf("R\n");
-                    pw.flush();
-                    pw.printf(address+"\n");
-                    pw.flush();
-                    AC = sc.nextInt();
-                    PC++;
+
+                    if(!kernel && (address > 999)){
+                        System.out.println("Memory violation: accessing system address "+address+ " in user mode ");
+                        pw.printf("E\n"); // type in the command
+                        pw.flush();
+                        System.exit(0);
+                    }else{
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf(address+"\n");
+                        pw.flush();
+                        AC = sc.nextInt();
+                        PC++;
+                    }
+                    
                     break;
                     case 3:
                     /* code */
@@ -90,12 +99,21 @@ public class Cpu{
                     pw.printf(PC + "\n");
                     pw.flush();
                     address = sc.nextInt();// return the value of the address
-                    pw.printf("R\n");
-                    pw.flush();
-                    pw.printf((address + x) + "\n");
-                    pw.flush();
-                    PC++;
-                    AC = sc.nextInt();                    
+
+                    if(!kernel && (address+x > 999)){
+                        System.out.println("Memory violation: accessing system address "+(address+x)+ " in user mode ");
+                        pw.printf("E\n"); // type in the command
+                        pw.flush();
+                        System.exit(0);
+                    }else{
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf((address + x) + "\n");
+                        pw.flush();
+                        PC++;
+                        AC = sc.nextInt(); 
+                    }
+                                       
                     break;
                     case 5:
                     pw.printf("R\n");
@@ -103,19 +121,37 @@ public class Cpu{
                     pw.printf(PC + "\n");
                     pw.flush();
                     address = sc.nextInt();// return the value of the address
-                    pw.printf("R\n");
-                    pw.flush();
-                    pw.printf((address + y) + "\n");
-                    pw.flush();
-                    PC++;
-                    AC = sc.nextInt();
+
+                    if(!kernel && (address+y > 999)){
+                        System.out.println("Memory violation: accessing system address "+(address+y) + " in user mode ");
+                        pw.printf("E\n"); // type in the command
+                        pw.flush();
+                        System.exit(0);
+                    }else{
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf((address + y) + "\n");
+                        pw.flush();
+                        PC++;
+                        AC = sc.nextInt();
+                    }
+
+                    
                     break;
                     case 6:
-                    pw.printf("R\n");
-                    pw.flush();
-                    pw.printf((SP+x) + "\n");
-                    pw.flush();
-                    AC = sc.nextInt();
+                    if(!kernel && (SP +x > 999)){
+                        System.out.println("Memory violation: accessing system address "+(SP+x)+ " in user mode ");
+                        pw.printf("E\n"); // type in the command
+                        pw.flush();
+                        System.exit(0);
+                    }else{
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf((SP+x) + "\n");
+                        pw.flush();
+                        AC = sc.nextInt();
+                    }
+                    
                     break;
                     case 7:
                     pw.printf("w\n" + PC + "\n");
@@ -317,7 +353,13 @@ public class Cpu{
                 }else{
                     counter++;
                 }
-                
+
+                if(!kernel && (PC > 999)){
+                    System.out.println("Memory violation: accessing system address "+PC+ " in user mode ");
+                    pw.printf("E\n"); // type in the command
+                    pw.flush();
+                    System.exit(0);
+                }
 
  
             }
@@ -325,7 +367,5 @@ public class Cpu{
             t.printStackTrace();
         }
     }
-
-// need to add a flag to tell system that it is in a different mode.
 }
 
