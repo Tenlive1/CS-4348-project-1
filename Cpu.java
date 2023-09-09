@@ -85,7 +85,37 @@ public class Cpu{
                     
                     break;
                     case 3:
-                    /* code */
+                    pw.printf("R\n");
+                    pw.flush();
+                    pw.printf(PC+"\n");
+                    pw.flush();
+                    address = sc.nextInt();
+                    if(!kernel && (address > 999)){
+                        System.out.println("Memory violation: accessing system address "+address+ " in user mode ");
+                        pw.printf("E\n"); // type in the command
+                        pw.flush();
+                        System.exit(0);
+                    }else{
+                        pw.printf("R\n");
+                        pw.flush();
+                        pw.printf(address+"\n");
+                        pw.flush();
+                        address = sc.nextInt();
+                        if(!kernel && (address > 999)){
+                            System.out.println("Memory violation: accessing system address "+address+ " in user mode ");
+                            pw.printf("E\n"); // type in the command
+                            pw.flush();
+                            System.exit(0);
+                        }else{
+                            pw.printf("R\n");
+                            pw.flush();
+                            pw.printf(address+"\n");
+                            pw.flush();
+                            AC = sc.nextInt();
+                            PC++;
+                        }
+                    }
+                    
                     
                     break;
                     case 4://Load the value at (address+X) into the AC
