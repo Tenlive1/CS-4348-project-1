@@ -1,8 +1,152 @@
-3
-500
+23 //line one
+7  ////////////remember to change this one.l...
+23 //line two
+20 
+23 //line three
+37
+50
 
-.300
-10
 
-.500
+        // line one
+1       
+32
+9       // printing space
+2
+1
+18      //amount of loop
+27      // push into stack
+23      //calling dash
 300
+28      //pop parm
+23      //calling newline
+400
+24      //return to address
+
+        // line Two
+1
+124
+9       //printing vertical line
+2
+1
+18
+27
+23      //calling space
+500
+28      //poping the parm
+1
+124
+9
+2
+23
+400
+24
+
+        //line three
+1
+124
+9
+2
+1
+32
+9
+2
+1
+11
+27      // push into stack
+23      //called ~
+600
+28
+1
+32
+9       //printing space 3 time
+2
+9
+2    
+9
+2
+23
+700  // printing A+
+1
+32
+9
+2
+1
+124
+9
+2
+24  ///////////////////////////////////69
+
+
+        //printing dash
+.300
+1       //load 1
+1
+14      //copy the value to x
+6       // this will find the total amount that it need to loop
+14      //copy that to x
+1       //load 45
+45
+9       //print dash
+2
+26      //decx
+15      //copyfromx
+22      //jump back to line 104 unless x is 0
+304
+24      //return too the original place
+
+        //call newline
+.400
+1
+10
+9       //print newline
+2
+24
+
+        //calling space
+.500
+1       //load 1
+1
+14      //copy the value to x
+6       // this will find the total amount that it need to loop
+14      //copy that to x
+1       //load 32
+32
+9       //print space
+2
+26      //decx
+15      //copyfromx
+22      //jump back to line 304 unless x is 0
+504
+24      //return too the original place
+
+    // calling ~
+.600
+1       //load 1
+1
+14      //copy the value to x
+6       // this will find the total amount that it need to loop
+14      //copy that to x
+1       //load 126
+126
+9       //print ~
+2
+26      //decx
+15      //copyfromx
+22      //jump back to line 304 unless x is 0
+604
+24      //return too the original place
+
+        //printing A+
+.700
+1
+65
+9       //print newline
+2
+1
+43
+9
+2
+24
+
+.1000
+30
