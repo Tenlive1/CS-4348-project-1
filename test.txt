@@ -1,9 +1,29 @@
 23 //line one
-7  ////////////remember to change this one.l...
+27 ////////////remember to change this one.l...
 23 //line two
-20 
+40 
 23 //line three
-37
+57
+23 // line four
+92
+23 // line five
+119
+23 //line 6
+146
+23 //line 7
+167
+23 //line 8
+146
+23 //line 9
+167
+23 //line 10
+188
+23 // line 11
+40
+23 //line 12
+27
+23 // line 13
+211
 50
 
 
@@ -74,8 +94,190 @@
 124
 9
 2
+23      //calling newline
+400
 24  ///////////////////////////////////69
 
+        //line four
+1
+124
+9
+2
+1
+32
+9
+2
+1
+15
+27      // push into stack
+23      //called ~
+600
+28
+1
+32
+9
+2
+9
+2
+1
+124
+9
+2
+23      //calling newline
+400
+24
+
+        //line five
+1
+124
+9
+2
+1
+32
+9
+2
+9
+2
+1
+15
+27      // push into stack
+23      //called ~
+600
+28
+1
+32
+9
+2
+1
+124
+9
+2
+23      //calling newline
+400
+24
+
+        //line six
+23
+800
+1
+12
+27      // push into stack
+23      //called ~
+600
+28
+1
+5
+27
+23      //calling space
+500
+28      //poping the parm
+1
+124
+9
+2
+23
+400
+24
+
+        //line seven
+23
+800
+1
+15
+27      // push into stack
+23      //called ~
+600
+28
+1
+32
+9       //printing space 2 time
+2
+9
+2
+1
+124
+9
+2
+23
+400
+24
+
+        //line ten
+23
+800
+1
+14
+27      // push into stack
+23      //called ~
+600
+28
+1
+32
+9       //printing space 3 time
+2
+9
+2
+9
+2
+1
+124
+9
+2
+23
+400
+24
+
+
+        //line 13
+1
+4
+27
+23      //calling space
+500
+28      //poping the parm
+23      //calling A+
+700
+1
+32
+9
+2
+1
+77 //M
+9
+2
+1
+97 //a
+9
+2
+1
+116 //t
+9
+2
+1
+101 //e
+9
+2
+1
+114 //r
+9
+2
+1
+105 //i
+9
+2
+1
+97 //a
+9
+2
+1
+108 //t
+9
+2
+1
+10
+9
+2
+24
 
         //printing dash
 .300
@@ -144,6 +346,18 @@
 2
 1
 43
+9
+2
+24
+
+        //printing |*space*
+.800
+1
+124
+9
+2
+1
+32
 9
 2
 24
