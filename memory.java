@@ -51,46 +51,46 @@ public class memory{
             //memory talking to the cpu
             while(sc.hasNext()){
                 String line = sc.nextLine();
-                if(line.equalsIgnoreCase("R")){
-                    pos = sc.nextInt();
-                    System.out.println(mem[pos]);
-                }else if(line.equalsIgnoreCase("W")){
-                    pos = sc.nextInt();
-                    pos = Integer.valueOf(mem[pos]);
-                    mem[pos] = String.valueOf(sc.nextInt());
+                if(line.equalsIgnoreCase("R")){// cpu saying memory to read a certain location in memory
+                    pos = sc.nextInt();// cpu give the location
+                    System.out.println(mem[pos]);// print the value in that location
+                }else if(line.equalsIgnoreCase("W")){// writing in memory
+                    pos = sc.nextInt();// cpu give the location
+                    pos = Integer.valueOf(mem[pos]);//new position
+                    mem[pos] = String.valueOf(sc.nextInt());//storing the value in that location
 
                 }else if(line.equalsIgnoreCase("PUSH")){//cpu want to push something
                     int Spos = sc.nextInt();// will get the stack pointer
                     
                     switch (sc.nextInt()){
-                        case 1:
+                        case 1:// saving PC
                         pos = sc.nextInt(); // the PC
                         mem[Spos] = String.valueOf(pos); // the posistion is now in the the user stack
                         pos = Integer.valueOf(mem[pos]); // gives the new position
                         System.out.println(pos);
                         break;
 
-                        case 2:
+                        case 2:// saving the AC into the stack
                         mem[Spos] = String.valueOf(sc.nextInt());
                         break;
                     }                    
                 }else if(line.equalsIgnoreCase("POP")){
                     int Spos = sc.nextInt();
                     switch (sc.nextInt()){
-                        case 1:
+                        case 1:// gettingPC
                             pos = Integer.valueOf(mem[Spos]);
                             System.out.println(pos);
                         break;
-                        case 2:
+                        case 2://gettingAC
                         System.out.println(mem[Spos]);
                         break;
                     }
                     
                 }
-                else if(line.equalsIgnoreCase("E")){
+                else if(line.equalsIgnoreCase("E")){// ending memory
                     System.exit(0);
                 }
-                else if(line.equalsIgnoreCase("interrupt")){
+                else if(line.equalsIgnoreCase("interrupt")){// there's a time interrupt 
                     pos = sc.nextInt();
                     mem[pos] = String.valueOf(sc.nextInt());// storing the user SP
                     pos = sc.nextInt();
@@ -98,9 +98,9 @@ public class memory{
                 }else if(line.equalsIgnoreCase("Done")){//done with the interrupt
                     pos = sc.nextInt();
                     
-                    System.out.println(mem[pos]);
+                    System.out.println(mem[pos]);// giving the pc
                     pos = sc.nextInt();
-                    System.out.println(mem[pos]);
+                    System.out.println(mem[pos]);// giving the SP
                 }
             }
 
