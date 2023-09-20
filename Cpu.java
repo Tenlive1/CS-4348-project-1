@@ -1,3 +1,7 @@
+/* Name: Perry Nguyen
+ * class: CS 4348.501
+ * professor: greg ozbirn
+ */
 import java.io.*;
 import java.util.Scanner;
 import java.lang.Runtime;
@@ -371,8 +375,8 @@ public class Cpu{
                     System.exit(0);
                     break;
                 }
-                if(!kernel && (counter >= timer)){
-                    counter =counter - timer;
+                if(!kernel && (counter >= timer)){// time interrupts
+                    counter =counter - timer;// this tell me how many interrupt the system need to do (yes it can loop forever)
                     int temp = SP;// to keep the user SP
                     SP =1999;// changing the SP to the system stack pointer
                     
@@ -386,22 +390,22 @@ public class Cpu{
                     SP--;
                     pw.printf(SP + "\n");
                     pw.flush();
-                    pw.printf(PC + "\n");
+                    pw.printf(PC + "\n");// storing the pc
                     pw.flush();
 
-                    PC = 1000;
+                    PC = 1000;// pc jump to where the time interrupts starts
 
-                    kernel =true;
+                    kernel =true;// in system mode
                     
                 }else{
-                    counter++;
+                    counter++;//counter increament
                 }
 
-                if(!kernel && (PC > 999)){
+                if(!kernel && (PC > 999)){// this will check if pc have enter the system memory
                     System.out.println("Memory violation: accessing system address "+PC+ " in user mode ");
-                    pw.printf("E\n"); // type in the command
+                    pw.printf("E\n"); // end memory
                     pw.flush();
-                    System.exit(0);
+                    System.exit(0);// end cpu
                 }
 
  
