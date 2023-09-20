@@ -49,121 +49,122 @@ public class Cpu{
 
                 Scanner sc = new Scanner(is);// seeing the input that the other program have input     
                 IR = sc.nextInt();// memory will give us an innstruction value
-                PC++;
+                PC++; // increament PC
 
                 
                 
                 switch(IR){ // this is how the CPU going to read the intruction from the memory
+
                     case 1://Load the value into the AC
-                    pw.printf("R\n");
+                    pw.printf("R\n"); // letting memory to read
                     pw.flush();
-                    pw.printf(PC + "\n");
+                    pw.printf(PC + "\n");//giving the memory the location
                     pw.flush();
                     AC = sc.nextInt();
                     PC++;// this increament the PC so that the memory don't return the wrong spot
                     break;
-                    case 2:
-                    pw.printf("R\n");
-                    pw.flush();
-                    pw.printf(PC+"\n");
-                    pw.flush();
-                    int address = sc.nextInt();
 
-                    if(!kernel && (address > 999)){
+
+                    case 2: // loading the value at address into the AC
+                    pw.printf("R\n"); // letting memory know that it is reading
+                    pw.flush();
+                    pw.printf(PC+"\n");// location of the memory
+                    pw.flush();
+                    int address = sc.nextInt(); // address is a temp holding the value.
+
+                    if(!kernel && (address > 999)){// checking if address is accessing the correct memory location
                         System.out.println("Memory violation: accessing system address "+address+ " in user mode ");
-                        pw.printf("E\n"); // type in the command
+                        pw.printf("E\n"); // ending the memory
                         pw.flush();
-                        System.exit(0);
-                    }else{
-                        pw.printf("R\n");
+                        System.exit(0);//ending cpu
+                    }else{ // address is good
+                        pw.printf("R\n");//telling memory that i want to read
                         pw.flush();
-                        pw.printf(address+"\n");
+                        pw.printf(address+"\n");// telling the memory where the value is located
                         pw.flush();
                         AC = sc.nextInt();
                         PC++;
                     }
-                    
                     break;
-                    case 3:
-                    pw.printf("R\n");
+
+                    case 3://Load the value from the address found in the given address into the AC
+                    pw.printf("R\n");// reading and giving the location
                     pw.flush();
                     pw.printf(PC+"\n");
                     pw.flush();
                     address = sc.nextInt();
                     if(!kernel && (address > 999)){
-                        System.out.println("Memory violation: accessing system address "+address+ " in user mode ");
-                        pw.printf("E\n"); // type in the command
+                        System.out.println("Memory violation: accessing system address "+address+ " in user mode ");// checking if address is accessing the correct memory location
+                        pw.printf("E\n"); // ending memory
                         pw.flush();
-                        System.exit(0);
+                        System.exit(0);// ending cpu
                     }else{
-                        pw.printf("R\n");
+                        pw.printf("R\n");// doing it again
                         pw.flush();
                         pw.printf(address+"\n");
                         pw.flush();
                         address = sc.nextInt();
-                        if(!kernel && (address > 999)){
+                        if(!kernel && (address > 999)){// checking if it is accessing the correct memory location
                             System.out.println("Memory violation: accessing system address "+address+ " in user mode ");
-                            pw.printf("E\n"); // type in the command
+                            pw.printf("E\n"); // ending memory
                             pw.flush();
-                            System.exit(0);
+                            System.exit(0);// ending cpu
                         }else{
-                            pw.printf("R\n");
+                            pw.printf("R\n");// letting memory know it need to read
                             pw.flush();
-                            pw.printf(address+"\n");
+                            pw.printf(address+"\n");// giving memory the location
                             pw.flush();
-                            AC = sc.nextInt();
+                            AC = sc.nextInt();// giving the value to the AC
                             PC++;
                         }
                     }
-                    
-                    
                     break;
+
                     case 4://Load the value at (address+X) into the AC
-                    pw.printf("R\n");
+                    pw.printf("R\n");// reading and giving the location in memory
                     pw.flush();
                     pw.printf(PC + "\n");
                     pw.flush();
                     address = sc.nextInt();// return the value of the address
 
-                    if(!kernel && (address+x > 999)){
+                    if(!kernel && (address+x > 999)){// checking to see if address+x will violate memory location
                         System.out.println("Memory violation: accessing system address "+(address+x)+ " in user mode ");
-                        pw.printf("E\n"); // type in the command
+                        pw.printf("E\n"); //ending memory
                         pw.flush();
-                        System.exit(0);
-                    }else{
-                        pw.printf("R\n");
+                        System.exit(0);// ending cpu
+                    }else{//address+x doesn't violate anything
+                        pw.printf("R\n");// memory will read from the location and put the value in the AC
                         pw.flush();
                         pw.printf((address + x) + "\n");
                         pw.flush();
                         PC++;
                         AC = sc.nextInt(); 
-                    }
-                                       
+                    }                   
                     break;
-                    case 5:
-                    pw.printf("R\n");
+
+                    case 5://Load the value at (address+Y) into the AC
+                    pw.printf("R\n");// reading and giving the location in memory
                     pw.flush();
                     pw.printf(PC + "\n");
                     pw.flush();
-                    address = sc.nextInt();// return the value of the address
+                    address = sc.nextInt();// return the address of what it want
 
-                    if(!kernel && (address+y > 999)){
+                    if(!kernel && (address+y > 999)){// checking to see if address goes out bound when it is not in kernel
                         System.out.println("Memory violation: accessing system address "+(address+y) + " in user mode ");
-                        pw.printf("E\n"); // type in the command
+                        pw.printf("E\n"); //ending memory
                         pw.flush();
-                        System.exit(0);
+                        System.exit(0);// ending cpu
                     }else{
-                        pw.printf("R\n");
+                        pw.printf("R\n");// reading the value at address+y and putting it in ac
                         pw.flush();
                         pw.printf((address + y) + "\n");
                         pw.flush();
                         PC++;
                         AC = sc.nextInt();
                     }
-
-                    
                     break;
-                    case 6:
+                    
+                    case 6://Load from (Sp+X) into the AC (if SP is 990, and X is 1, load from 991)
                     if(!kernel && (SP +x > 999)){
                         System.out.println("Memory violation: accessing system address "+(SP+x)+ " in user mode ");
                         pw.printf("E\n"); // type in the command
