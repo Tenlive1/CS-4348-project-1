@@ -47,8 +47,8 @@ public class Cpu{
                 
                 switch(IR){ // this is how the CPU going to read the intruction from the memory
 
-                    case 1://Load the value into the AC   /* x */
-                    pw.printf("read\n" + PC + "\n"); // letting memory to read
+                    case 1://Load the value into the AC   
+                    pw.printf("read\n" + PC + "\n"); // memory reading a certain location
                     pw.flush();
 
                     AC = sc.nextInt();
@@ -56,8 +56,8 @@ public class Cpu{
                     break;
 
 
-                    case 2: // loading the value at address into the AC /* x */
-                    pw.printf("read\n" + PC + "\n"); // letting memory know that it is reading
+                    case 2: // loading the value at address into the AC 
+                    pw.printf("read\n" + PC + "\n"); // memory reading a certain location
                     pw.flush();
                     int address = sc.nextInt(); // address is a temp holding the value.
 
@@ -67,24 +67,24 @@ public class Cpu{
                         pw.flush();
                         System.exit(0);//ending cpu
                     }else{ // address is good
-                        pw.printf("read\n" + address + "\n");//telling memory that i want to read
+                        pw.printf("read\n" + address + "\n");// memory reading a certain location
                         pw.flush();
-                        AC = sc.nextInt();
-                        PC++;
+                        AC = sc.nextInt(); // loading the value in AC
+                        PC++; // increamenting the pc
                     }
                     break;
 
-                    case 3://Load the value from the address found in the given address into the AC   /* x */
-                    pw.printf("read\n" + PC + "\n");// reading and giving the location
+                    case 3://Load the value from the address found in the given address into the AC   
+                    pw.printf("read\n" + PC + "\n");// memory reading a certain location
                     pw.flush();
-                    address = sc.nextInt();
+                    address = sc.nextInt(); // address is temp
                     if(!kernel && (address > 999)){
                         System.out.println("Memory violation: accessing system address "+address+ " in user mode ");// checking if address is accessing the correct memory location
                         pw.printf("end\n"); // ending memory
                         pw.flush();
                         System.exit(0);// ending cpu
                     }else{
-                        pw.printf("read\n" + address + "\n");// doing it again
+                        pw.printf("read\n" + address + "\n");// reading another address
                         pw.flush();
                         address = sc.nextInt();
                         if(!kernel && (address > 999)){// checking if it is accessing the correct memory location
@@ -93,7 +93,7 @@ public class Cpu{
                             pw.flush();
                             System.exit(0);// ending cpu
                         }else{
-                            pw.printf("read\n" + address + "\n");// letting memory know it need to read
+                            pw.printf("read\n" + address + "\n");// reading the value
                             pw.flush();
                             AC = sc.nextInt();// giving the value to the AC
                             PC++;
@@ -101,7 +101,7 @@ public class Cpu{
                     }
                     break;
 
-                    case 4://Load the value at (address+X) into the AC   /* x */
+                    case 4://Load the value at (address+X) into the AC   
                     pw.printf("read\n" + PC + "\n");// reading and giving the location in memory
                     pw.flush();
                     address = sc.nextInt();// return the value of the address
@@ -119,7 +119,7 @@ public class Cpu{
                     }                   
                     break;
 
-                    case 5://Load the value at (address+Y) into the AC  /* x */
+                    case 5://Load the value at (address+Y) into the AC  
                     pw.printf("read\n" + PC + "\n");// reading and giving the location in memory
                     pw.flush();
                     address = sc.nextInt();// return the value of the address
@@ -137,7 +137,7 @@ public class Cpu{
                     }
                     break;
                     
-                    case 6://Load from (Sp+X) into the AC (if SP is 990, and X is 1, load from 991)    /* x */
+                    case 6://Load from (Sp+X) into the AC (if SP is 990, and X is 1, load from 991)    
                     if(!kernel && (SP +x > 999)){ // checking to see that in user mode does SP+x access soemthing beyond user mode
                         System.out.println("Memory violation: accessing system address "+(SP+x)+ " in user mode ");
                         pw.printf("end\n"); // type in the command
@@ -150,8 +150,8 @@ public class Cpu{
                     }
                     break;
 
-                    case 7://Store the value in the AC into the address   /* x */
-                    pw.printf("read\n" + PC + "\n");
+                    case 7://Store the value in the AC into the address   
+                    pw.printf("read\n" + PC + "\n"); // memory reading a certain location
                     pw.flush();
                     pw.printf("write\n" + sc.nextInt() + "\n" + AC + "\n");// memory will now write in that address
                     pw.flush();
@@ -161,7 +161,7 @@ public class Cpu{
                     case 8://Gets a random int from 1 to 100 into the AC
                     AC = (int)Math.floor((Math.random() * 101))+1; //(0 - 99) + 1 = (1 - 100) range 
                     break;
-                    case 9:// Put port     /* x */
+                    case 9:// Put port     
                     pw.printf("read\n" + PC + "\n"); //reading the location and firguring out the value of the IR
                     pw.flush();
                     PC++;
@@ -174,55 +174,53 @@ public class Cpu{
                     }
                     break;
 
-                    case 10://Add the value in X to the AC /* x */
+                    case 10://Add the value in X to the AC 
                     AC = AC + x;
                     break;
 
-                    case 11:// Add the value in Y to the AC /* x */
+                    case 11:// Add the value in Y to the AC 
                     AC = AC + y;
                     break;
 
-                    case 12://Subtract the value in X from the AC /* x */
+                    case 12://Subtract the value in X from the AC 
                     AC = AC -x;
                     break;
 
-                    case 13://Subtract the value in Y from the AC /* x */
+                    case 13://Subtract the value in Y from the AC 
                     AC = AC -y;
                     break;
 
-                    case 14://Copy the value in the AC to X    /* x */
+                    case 14://Copy the value in the AC to X    
                     x = AC;
                     break;
 
-                    case 15://Copy the value in X to the AC /* x */
+                    case 15://Copy the value in X to the AC 
                     AC = x;
                     break;
 
-                    case 16://Copy the value in the AC to Y /* x */
+                    case 16://Copy the value in the AC to Y 
                     y = AC;
                     break;
 
-                    case 17://Copy the value in Y to the AC /* x */
+                    case 17://Copy the value in Y to the AC 
                     AC = y;
                     break;
 
-                    case 18:// Copy the value in AC to the SP /* x */
+                    case 18:// Copy the value in AC to the SP 
                     SP = AC;
                     break;
 
-                    case 19://Copy the value in SP to the AC  /* x */
+                    case 19://Copy the value in SP to the AC  
                     AC = SP;
                     break;
 
-                    case 20:// jump to address /* x */
-                    pw.printf("read\n" + PC + "\n");// reading the at the location
-                    pw.flush();
-                    pw.printf(PC + "\n");
+                    case 20:// jump to address 
+                    pw.printf("read\n" + PC + "\n");// asking memory to read a certain location
                     pw.flush();
                     PC = sc.nextInt();// memory should give us an address for the pc
                     break;
                     
-                    case 21://Jump to the address only if the value in the AC is zero   /* x */
+                    case 21://Jump to the address only if the value in the AC is zero   
                     if(AC == 0){
                         pw.printf("read\n" + PC + "\n");// reading the next location
                         pw.flush();
@@ -232,7 +230,7 @@ public class Cpu{
                     }
                     break;
 
-                    case 22://Jump to the address only if the value in the AC is not zero /* x */
+                    case 22://Jump to the address only if the value in the AC is not zero 
                     if(AC != 0){
                         pw.printf("read\n" + PC + "\n");//reading at the location
                         pw.flush();
@@ -242,16 +240,16 @@ public class Cpu{
                     }
                     break;
 
-                    case 23://Push return address onto stack, jump to the address    /* x */
+                    case 23://Push return address onto stack, jump to the address    
                     SP--; 
-                    pw.printf("write\n" + SP + "\n" + PC + "\n");
+                    pw.printf("write\n" + SP + "\n" + PC + "\n"); // pushing pc into the stack
                     pw.flush();
-                    pw.printf("read\n" + PC + "\n");
+                    pw.printf("read\n" + PC + "\n"); // reading the new address
                     pw.flush();
                     PC = sc.nextInt();// new addrees to jump
                     break;
 
-                    case 24://Pop return address from the stack, jump to the address   /* x */
+                    case 24://Pop return address from the stack, jump to the address   
                     pw.printf("read\n" + SP + "\n");// telling memory to pop from the stack
                     pw.flush();
                     SP++;
@@ -259,20 +257,20 @@ public class Cpu{
                     PC++;//this increament so that the CPU won't stay at the same spot when it was push into the stack
                     
                     break;
-                    case 25://Increment the value in X  /* x */
+                    case 25://Increment the value in X  
                     x++;
                     break;
-                    case 26://Decrement the value in X  /* x */
+                    case 26://Decrement the value in X  
                     x--;
                     break;
-                    case 27://Push AC onto stack     /* x */
+                    case 27://Push AC onto stack     
                     SP--;
                     pw.printf("write\n" + SP + "\n" + AC + "\n");
                     pw.flush();
                     break;
 
-                    case 28://Pop from stack into AC /* x */
-                    pw.printf("read\n" + SP + "\n");//where in memory to read
+                    case 28://Pop from stack into AC 
+                    pw.printf("read\n" + SP + "\n");// memory reading a certain location
                     pw.flush();
                     SP++;//increament
                     AC = sc.nextInt();
@@ -292,7 +290,7 @@ public class Cpu{
 
                     kernel =true;// insystem mode now
                     break;
-                    case 30://return from system call /* x */
+                    case 30://return from system call 
                     pw.printf("read\n" + SP + "\n");
                     pw.flush();
                     PC = sc.nextInt();// restoring the pc
@@ -303,13 +301,13 @@ public class Cpu{
                     kernel =false;// in user mode now
                     
                     break;
-                    case 50://End execution    /* x */
+                    case 50://End execution    
                     pw.printf("end\n"); // type in the command
                     pw.flush();
                     System.exit(0);
                     break;
                 }
-                if(!kernel && (counter >= timer)){// time interrupts  /* x */
+                if(!kernel && (counter >= timer)){// time interrupts  
                     counter =counter - timer;// this tell me how many interrupt the system need to do (yes it can loop forever)
                     int temp = SP;// to keep the user SP
                     SP =2000;// changing the SP to the system stack pointer
