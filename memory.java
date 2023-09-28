@@ -54,7 +54,7 @@ public class memory{
                 if(line.equalsIgnoreCase("read")){// cpu saying memory to read a certain location in memory
 
                     pos = sc.nextInt();// cpu give the location
-                    System.out.println(mem[pos]);// print the value in that location
+                    System.out.println((Integer.valueOf(mem[pos])));// print the value in that location
 
 
                 }else if(line.equalsIgnoreCase("write")){// writing in memory
