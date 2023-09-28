@@ -327,7 +327,7 @@ public class Cpu{
 
                     kernel =true;// insystem mode now
                     break;
-                    case 30://return from system call
+                    case 30://return from system call /* x */
                     pw.printf("read\n" + SP + "\n");
                     pw.flush();
                     PC = sc.nextInt();// restoring the pc
@@ -344,7 +344,7 @@ public class Cpu{
                     System.exit(0);
                     break;
                 }
-                if(!kernel && (counter >= timer)){// time interrupts
+                if(!kernel && (counter >= timer)){// time interrupts  /* x */
                     counter =counter - timer;// this tell me how many interrupt the system need to do (yes it can loop forever)
                     int temp = SP;// to keep the user SP
                     SP =2000;// changing the SP to the system stack pointer
