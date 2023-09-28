@@ -52,12 +52,17 @@ public class memory{
             while(sc.hasNext()){
                 String line = sc.nextLine();
                 if(line.equalsIgnoreCase("R")){// cpu saying memory to read a certain location in memory
+
                     pos = sc.nextInt();// cpu give the location
                     System.out.println(mem[pos]);// print the value in that location
+
+
                 }else if(line.equalsIgnoreCase("W")){// writing in memory
+
                     pos = sc.nextInt();// cpu give the location
                     pos = Integer.valueOf(mem[pos]);//new position
                     mem[pos] = String.valueOf(sc.nextInt());//storing the value in that location
+                    
 
                 }else if(line.equalsIgnoreCase("PUSH")){//cpu want to push something
                     int Spos = sc.nextInt();// will get the stack pointer
