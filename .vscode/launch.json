@@ -11,7 +11,7 @@
             "request": "launch",
             "mainClass": "Cpu",
             "projectName": "CS-4348-project-1_c2f24bd2",
-            "args": "s1.txt 30"
+            "args": "sample1.txt 30"
         },
         {
             "type": "java",
