@@ -43,7 +43,12 @@ public class Cpu{
                 IR = sc.nextInt();// memory will give us an innstruction value
                 PC++; // increament PC
 
-                
+                if(!kernel && (PC > 999)){// this will check if pc have enter the system memory
+                    System.out.println("Memory violation: accessing system address "+ PC + " in user mode ");
+                    pw.printf("end\n"); // end memory
+                    pw.flush();
+                    System.exit(0);// end cpu
+                }
                 
                 switch(IR){ // this is how the CPU going to read the intruction from the memory
 
@@ -327,12 +332,7 @@ public class Cpu{
                     counter++;//counter increament
                 }
 
-                if(!kernel && (PC > 999)){// this will check if pc have enter the system memory
-                    System.out.println("Memory violation: accessing system address "+ PC + " in user mode ");
-                    pw.printf("end\n"); // end memory
-                    pw.flush();
-                    System.exit(0);// end cpu
-                }
+                
 
  
             }
